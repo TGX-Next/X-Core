@@ -14,13 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+// region @MadeByLLM("gpt-6", id = "android13-arm64")
 
 @file:JvmName("StringUtils")
 
 package me.vkryl.core
 
 import android.net.Uri
-import android.os.Build
 import android.text.Spanned
 import androidx.core.net.toUri
 import androidx.core.text.getSpans
@@ -31,7 +31,7 @@ import java.util.*
 import java.util.regex.Pattern
 
 @JvmField
-val UTF_8: Charset = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) java.nio.charset.StandardCharsets.UTF_8 else Charset.forName("UTF-8")
+val UTF_8: Charset = java.nio.charset.StandardCharsets.UTF_8
 
 fun isEmpty(str: CharSequence?): Boolean = str.isNullOrEmpty()
 fun isEmptyOrBlank(str: CharSequence?): Boolean = str.isNullOrBlank()
@@ -392,3 +392,4 @@ fun toUtfString(string: CharSequence): String {
   }
   return b.toString()
 }
+// endregion

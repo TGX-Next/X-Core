@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+// region @MadeByLLM("gpt-6", id = "android13-arm64")
 
 @file:JvmName("ArrayUtils")
 
 package me.vkryl.core
 
-import android.os.Build
 import android.util.SparseIntArray
 import androidx.collection.LongSparseArray
 import androidx.collection.SparseArrayCompat
@@ -291,7 +291,7 @@ fun SparseIntArray.increment (key: Int): Int {
   } else {
     1
   }
-  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && index >= 0) {
+  if (index >= 0) {
     this.setValueAt(index, value)
   } else {
     this.put(key, value)
@@ -371,3 +371,4 @@ fun <T> hash(vararg items: T): Int =
 
 fun hash(vararg items: Number): Int =
   items.contentHashCode()
+// endregion
