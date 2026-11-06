@@ -1,4 +1,3 @@
-// region @MadeByLLM("gpt-6", id = "android13-arm64")
 plugins {
   id("java-toolchain-convention")
   id(libs.plugins.android.library.get().pluginId)
@@ -12,4 +11,3 @@ dependencies {
 android {
   namespace = "me.vkryl.core"
 }
-// endregion

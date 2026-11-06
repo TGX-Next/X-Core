@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// region @MadeByLLM("gpt-6", id = "android13-arm64")
 
 @file:JvmName("ArrayUtils")
 
@@ -371,4 +370,3 @@ fun <T> hash(vararg items: T): Int =
 
 fun hash(vararg items: Number): Int =
   items.contentHashCode()
-// endregion

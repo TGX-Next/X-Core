@@ -15,12 +15,9 @@
  * limitations under the License.
  */
 
-@file:MadeByLLM("opus-5.5")
-
 package me.vkryl.core
 
 import android.graphics.Color
-import me.vkryl.annotation.MadeByLLM
 import kotlin.math.cbrt
 import kotlin.math.pow
 import kotlin.math.roundToInt
