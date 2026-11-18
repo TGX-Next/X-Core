@@ -264,6 +264,21 @@ fun <T> MutableList<T>.move(fromPosition: Int, toPosition: Int) {
   }
 }
 
+fun <T> MutableList<T>.insertionSort(comparator: Comparator<in T>) {
+  // Never throws when the order changes during the sort (unlike Collections.sort)
+  var i = 1
+  while (i < size) {
+    val item = this[i]
+    var j = i - 1
+    while (j >= 0 && comparator.compare(this[j], item) > 0) {
+      this[j + 1] = this[j]
+      j--
+    }
+    this[j + 1] = item
+    i++
+  }
+}
+
 fun List<*>.ensureCapacity(size: Int) {
   if (this is ArrayList<*>) {
     this.ensureCapacity(size)
@@ -326,8 +341,8 @@ fun LongSparseArray<LongArray>?.contentEquals(to: LongSparseArray<LongArray>?): 
     this == null && to == null -> true
     this == null || to == null || this.size() != to.size() -> false
     else -> {
-      for (i in 0 .. size()) {
-        if (keyAt(i) != to.keyAt(i) || !Arrays.equals(valueAt(i), to.valueAt(i)))
+      for (i in 0 until size()) {
+        if (keyAt(i) != to.keyAt(i) || !valueAt(i).contentEquals(to.valueAt(i)))
           return false
       }
       true
@@ -336,7 +351,7 @@ fun LongSparseArray<LongArray>?.contentEquals(to: LongSparseArray<LongArray>?): 
 }
 
 fun <T : Comparable<T>> ArrayList<T>.addSorted(element: T): Int {
-  val index = Collections.binarySearch(this, element)
+  val index = this.binarySearch(element)
   if (index >= 0)
     throw IllegalArgumentException()
   val at = (-index) - 1
@@ -345,7 +360,7 @@ fun <T : Comparable<T>> ArrayList<T>.addSorted(element: T): Int {
 }
 
 fun <T : Comparable<T>> ArrayList<T>.removeSorted(element: T): Boolean {
-  val index = Collections.binarySearch(this, element)
+  val index = this.binarySearch(element)
   return if (index >= 0) {
     this.removeAt(index)
     true
